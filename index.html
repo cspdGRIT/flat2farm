@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgriConnect - Transform Your City Assets into Rural Wealth</title>
+    <title>Flat2FarmsConnect - Transform Your City Assets into Rural Wealth</title>
     <style>
         * {
             margin: 0;
@@ -132,13 +132,13 @@
         }
 
         .btn-primary {
-            background: #ff6b35;
+            background: #f59e0b;
             color: white;
         }
 
         .btn-secondary {
             background: white;
-            color: #2d5a27;
+            color: #1e3a8a;
         }
 
         .btn:hover {
@@ -203,7 +203,7 @@
         }
 
         .feature-badge {
-            background: #ff6b35;
+            background: #f59e0b;
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -219,40 +219,61 @@
             background: #f8fafc;
         }
 
-        .steps {
+        .user-types {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             margin-top: 3rem;
         }
 
-        .step {
+        .user-type {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .user-type h3 {
+            color: #2d5a27;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
             text-align: center;
+        }
+
+        .steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
             position: relative;
         }
 
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+        .steps li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #4a8c3a;
             color: white;
+            width: 1.5rem;
+            height: 1.5rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 0.8rem;
             font-weight: bold;
-            margin: 0 auto 1rem;
         }
 
-        .step-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #2d5a27;
+        .user-type ol {
+            counter-reset: step-counter;
         }
 
-        /* Demo Section */
+        /* Enhanced Demo Section */
         .demo {
             padding: 5rem 0;
             background: white;
@@ -262,7 +283,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            align-items: center;
+            align-items: start;
         }
 
         .demo-form {
@@ -297,6 +318,83 @@
             border-color: #4a8c3a;
         }
 
+        /* Alert System */
+        .alert-preferences {
+            background: #f0f9f0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid #4a8c3a;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+        }
+
+        /* Notification Simulator */
+        .notification-demo {
+            background: #f0f9f0;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #4a8c3a;
+        }
+
+        .notification {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            border-left: 4px solid #10b981;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .notification.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .notification-header {
+            font-weight: bold;
+            color: #065f46;
+            margin-bottom: 0.5rem;
+        }
+
+        .notification-content {
+            color: #374151;
+            font-size: 0.9rem;
+        }
+
+        .notification-time {
+            color: #6b7280;
+            font-size: 0.8rem;
+            float: right;
+        }
+
         /* Pricing */
         .pricing {
             padding: 5rem 0;
@@ -317,7 +415,7 @@
         .price {
             font-size: 3rem;
             font-weight: bold;
-            color: #ff6b35;
+            color: #f59e0b;
             margin-bottom: 1rem;
         }
 
@@ -326,7 +424,7 @@
             margin-bottom: 2rem;
         }
 
-        /* Modal */
+        /* Contact Modal */
         .modal {
             display: none;
             position: fixed;
@@ -358,6 +456,55 @@
 
         .close:hover {
             color: #000;
+        }
+
+        .contact-info {
+            background: #f0f9f0;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #4a8c3a;
+        }
+
+        /* Success Messages */
+        .success-message {
+            background: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .matches-container {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+
+        .match-card {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            background: white;
+        }
+
+        .match-card h4 {
+            color: #2d5a27;
+            margin-bottom: 0.5rem;
+        }
+
+        .match-price {
+            color: #f59e0b;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .match-details {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
         }
 
         /* Disclaimers */
@@ -409,7 +556,7 @@
                 font-size: 2.5rem;
             }
             
-            .demo-container {
+            .demo-container, .user-types {
                 grid-template-columns: 1fr;
             }
             
@@ -434,22 +581,20 @@
             animation: fadeInUp 0.6s ease-out;
         }
 
-        /* Success Message */
-        .success-message {
-            background: #4caf50;
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            display: none;
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4a8c3a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
 
-        .contact-info {
-            background: #e8f5e8;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border-left: 4px solid #4a8c3a;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -457,12 +602,12 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav container">
-            <div class="logo">🌾 AgriConnect</div>
+            <div class="logo">🏢🔄🌾 Flat2FarmsConnect</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#demo">Demo</a></li>
+                <li><a href="#demo">Live Demo</a></li>
                 <li><a href="#pricing">Pricing</a></li>
             </ul>
         </nav>
@@ -472,29 +617,29 @@
     <section id="home" class="hero">
         <div class="container">
             <h1>Transform Your City Assets into Rural Wealth</h1>
-            <p>Connecting urban flat sellers with rural farmland opportunities across India. Diversify your portfolio from concrete to crops.</p>
+            <p>Connect flat sellers seeking farmland investments with farmland owners seeking immediate cash. Smart matching, ₹10 contact access, instant alerts.</p>
             
             <div class="cta-buttons">
-                <a href="#demo" class="btn btn-primary">Start Your Journey</a>
-                <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
+                <a href="#demo" class="btn btn-primary">Try Live Demo</a>
+                <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
             </div>
 
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-number">15,000+</div>
-                    <div class="stat-label">Active Listings</div>
+                    <div class="stat-number">8,500+</div>
+                    <div class="stat-label">Active Flat Sellers</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">500+</div>
+                    <div class="stat-number">12,000+</div>
+                    <div class="stat-label">Farmland Listings</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">750+</div>
                     <div class="stat-label">Successful Connections</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Cities & Districts</div>
-                </div>
-                <div class="stat">
                     <div class="stat-number">₹10</div>
-                    <div class="stat-label">Contact Fee Only</div>
+                    <div class="stat-label">Per Contact Only</div>
                 </div>
             </div>
         </div>
@@ -503,62 +648,48 @@
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title">Comprehensive Platform Features</h2>
+            <h2 class="section-title">Smart Features for Perfect Matches</h2>
             <div class="features-grid">
                 <div class="feature-card fade-in">
-                    <div class="feature-badge">For City Dwellers</div>
+                    <div class="feature-badge">For Flat Sellers</div>
                     <div class="feature-icon">🏢</div>
-                    <h3 class="feature-title">Flat Seller Hub</h3>
-                    <p class="feature-description">List your city properties and explore farmland investment opportunities. Get matched with rural sellers looking for urban property exchanges or direct sales.</p>
+                    <h3 class="feature-title">Smart Village Alerts</h3>
+                    <p class="feature-description">Get instant notifications when farmlands in your desired villages come on market. Set alerts by location, price range, and farm type.</p>
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-badge">For Rural Owners</div>
+                    <div class="feature-badge">For Farmland Owners</div>
                     <div class="feature-icon">🌾</div>
-                    <h3 class="feature-title">Farmland Marketplace</h3>
-                    <p class="feature-description">Showcase your agricultural lands to city buyers. Access urban capital while maintaining your rural heritage through our trusted platform.</p>
+                    <h3 class="feature-title">Buyer Demand Alerts</h3>
+                    <p class="feature-description">Receive notifications when flat sellers post buying requirements matching your land specifications. Connect with serious cash buyers instantly.</p>
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-badge">Smart Matching</div>
+                    <div class="feature-badge">AI Matching</div>
                     <div class="feature-icon">🎯</div>
-                    <h3 class="feature-title">AI-Powered Matching</h3>
-                    <p class="feature-description">Advanced algorithms match properties based on value, location preferences, soil quality, connectivity, and investment goals for perfect fits.</p>
+                    <h3 class="feature-title">Intelligent Property Matching</h3>
+                    <p class="feature-description">Advanced algorithms match flat values with equivalent farmland prices, considering location preferences, soil quality, and investment goals.</p>
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-badge">Caretaker Network</div>
-                    <div class="feature-icon">👨‍🌾</div>
-                    <h3 class="feature-title">Professional Caretakers</h3>
-                    <p class="feature-description">Connect with verified local caretakers who manage your farmland investments. From maintenance to crop management - we've got you covered.</p>
+                    <div class="feature-badge">Instant Alerts</div>
+                    <div class="feature-icon">🔔</div>
+                    <h3 class="feature-title">Real-Time Notifications</h3>
+                    <p class="feature-description">SMS, WhatsApp, and email alerts when perfect matches appear. Never miss opportunities in your preferred villages or price ranges.</p>
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-badge">Secure Payments</div>
+                    <div class="feature-badge">Secure Access</div>
                     <div class="feature-icon">🔒</div>
                     <h3 class="feature-title">₹10 Contact System</h3>
-                    <p class="feature-description">Pay only ₹10 to access verified contact details. No hidden fees, no subscriptions. Connect directly with serious buyers and sellers only.</p>
+                    <p class="feature-description">Pay only ₹10 to access verified contact details. Connect directly with serious buyers and sellers who are ready to transact.</p>
                 </div>
 
                 <div class="feature-card fade-in">
-                    <div class="feature-badge">Full Support</div>
-                    <div class="feature-icon">📋</div>
-                    <h3 class="feature-title">Documentation Assistance</h3>
-                    <p class="feature-description">Get guidance on legal documentation, land verification, and transfer processes. We connect you with local experts for seamless transactions.</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-badge">Market Intelligence</div>
+                    <div class="feature-badge">Market Intel</div>
                     <div class="feature-icon">📊</div>
                     <h3 class="feature-title">Price Analytics</h3>
-                    <p class="feature-description">Access real-time market data, price trends, and valuation insights for both urban properties and rural farmlands across different regions.</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-badge">Community</div>
-                    <div class="feature-icon">🤝</div>
-                    <h3 class="feature-title">Feedback & Reviews</h3>
-                    <p class="feature-description">Build trust through our verified review system. Rate your experiences and help others make informed decisions in their property journey.</p>
+                    <p class="feature-description">Real-time market data showing flat-to-farmland value equivalencies, village-wise price trends, and investment opportunities.</p>
                 </div>
             </div>
         </div>
@@ -567,81 +698,100 @@
     <!-- How It Works -->
     <section id="how-it-works" class="how-it-works">
         <div class="container">
-            <h2 class="section-title">How AgriConnect Works</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Create Your Profile</h3>
-                    <p>Register as a flat seller, farmland owner, or caretaker. Complete your profile with detailed information and preferences.</p>
+            <h2 class="section-title">How Flat2FarmsConnect Works</h2>
+            <div class="user-types">
+                <div class="user-type">
+                    <h3>🏢 For Flat Sellers (Seeking Farmland)</h3>
+                    <ol class="steps">
+                        <li>Register & list your flat with photos and price</li>
+                        <li>Set farmland preferences (villages, price range, farm type)</li>
+                        <li>Enable smart alerts for your desired locations</li>
+                        <li>Get instant notifications when matching farmlands appear</li>
+                        <li>Pay ₹10 to unlock seller contact details</li>
+                        <li>Connect directly and negotiate your exchange deal</li>
+                    </ol>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">List Your Property</h3>
-                    <p>Upload photos, documents, and detailed descriptions. Our AI helps optimize your listing for maximum visibility.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Get Smart Matches</h3>
-                    <p>Receive notifications when suitable properties match your criteria. Browse curated recommendations based on your preferences.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3 class="step-title">Pay ₹10 & Connect</h3>
-                    <p>Pay a small fee to access contact details of serious buyers/sellers. Direct communication with verified users only.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">5</div>
-                    <h3 class="step-title">Complete Transaction</h3>
-                    <p>Handle the deal directly with legal and documentation support. Leave feedback to help the community grow.</p>
+                <div class="user-type">
+                    <h3>🌾 For Farmland Owners (Seeking Money)</h3>
+                    <ol class="steps">
+                        <li>Register & list your farmland with detailed information</li>
+                        <li>Set your preferred cash amount and buyer criteria</li>
+                        <li>Enable alerts for flat sellers in your price range</li>
+                        <li>Get notifications when buyers post matching requirements</li>
+                        <li>Pay ₹10 to access serious buyer contact details</li>
+                        <li>Connect directly and close your cash deal</li>
+                    </ol>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Demo Section -->
+    <!-- Enhanced Demo Section -->
     <section id="demo" class="demo">
         <div class="container">
-            <h2 class="section-title">Try Our Platform Demo</h2>
+            <h2 class="section-title">Live Demo - Try Our Smart Alert System</h2>
             <div class="demo-container">
-                <div>
-                    <h3>Experience the Future of Property Exchange</h3>
-                    <p>Test our matching algorithm with real data. See how we connect city properties with rural farmlands based on your specific requirements.</p>
-                    <ul style="margin: 2rem 0; line-height: 2;">
-                        <li>✅ Smart property matching</li>
-                        <li>✅ Price analytics & trends</li>
-                        <li>✅ Document verification</li>
-                        <li>✅ Caretaker recommendations</li>
-                        <li>✅ Legal compliance checker</li>
-                    </ul>
-                </div>
                 <div class="demo-form">
-                    <h3 style="margin-bottom: 1.5rem; color: #2d5a27;">Find Your Perfect Match</h3>
+                    <h3 style="margin-bottom: 1.5rem; color: #2d5a27;">Experience Smart Matching & Alerts</h3>
                     <form id="demoForm">
                         <div class="form-group">
-                            <label for="propertyType">I want to:</label>
-                            <select id="propertyType" required>
-                                <option value="">Select option</option>
-                                <option value="sell-flat">Sell my city flat for farmland</option>
-                                <option value="sell-farm">Sell my farmland</option>
-                                <option value="become-caretaker">Become a caretaker</option>
-                                <option value="find-caretaker">Find a caretaker</option>
+                            <label for="userType">I am a:</label>
+                            <select id="userType" required>
+                                <option value="">Select your type</option>
+                                <option value="flat-seller">Flat Seller (Looking for farmland)</option>
+                                <option value="farm-seller">Farmland Owner (Looking for money)</option>
                             </select>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="location">Location/City:</label>
-                            <input type="text" id="location" placeholder="e.g., Mumbai, Delhi, Pune" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="budget">Budget Range:</label>
-                            <select id="budget" required>
-                                <option value="">Select budget</option>
-                                <option value="5-15">₹5-15 Lakhs</option>
-                                <option value="15-50">₹15-50 Lakhs</option>
+                        <div class="form-group" id="flatDetails" style="display: none;">
+                            <label for="flatLocation">My Flat Location:</label>
+                            <input type="text" id="flatLocation" placeholder="e.g., Mumbai, Delhi, Pune">
+                            <label for="flatValue" style="margin-top: 1rem;">Flat Value:</label>
+                            <select id="flatValue">
+                                <option value="25-50">₹25-50 Lakhs</option>
                                 <option value="50-100">₹50L-1 Crore</option>
-                                <option value="100+">₹1 Crore+</option>
+                                <option value="100-200">₹1-2 Crores</option>
+                                <option value="200+">₹2+ Crores</option>
                             </select>
+                        </div>
+
+                        <div class="form-group" id="farmDetails" style="display: none;">
+                            <label for="farmLocation">My Farmland Location:</label>
+                            <input type="text" id="farmLocation" placeholder="e.g., Nashik, Aurangabad, Sangli">
+                            <label for="farmSize" style="margin-top: 1rem;">Farm Size:</label>
+                            <select id="farmSize">
+                                <option value="1-5">1-5 Acres</option>
+                                <option value="5-10">5-10 Acres</option>
+                                <option value="10-25">10-25 Acres</option>
+                                <option value="25+">25+ Acres</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="preferredLocation">Preferred Location/Villages:</label>
+                            <input type="text" id="preferredLocation" placeholder="e.g., Nashik, Satara, Kolhapur villages" required>
+                        </div>
+                        
+                        <div class="alert-preferences">
+                            <h4 style="color: #2d5a27; margin-bottom: 1rem;">🔔 Alert Preferences</h4>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="smsAlert" checked>
+                                    <label for="smsAlert">SMS Alerts</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="whatsappAlert" checked>
+                                    <label for="whatsappAlert">WhatsApp Alerts</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="emailAlert" checked>
+                                    <label for="emailAlert">Email Alerts</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="instantAlert" checked>
+                                    <label for="instantAlert">Instant Alerts</label>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="form-group">
@@ -649,11 +799,27 @@
                             <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Find Matches Now</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Activate Smart Alerts</button>
                     </form>
                     
                     <div id="successMessage" class="success-message">
-                        🎉 Great! We found 12 potential matches for you. Pay ₹10 to unlock contact details!
+                        🎉 Smart alerts activated! See live notifications on the right →
+                    </div>
+                </div>
+
+                <div class="notification-demo">
+                    <h3 style="margin-bottom: 1.5rem; color: #2d5a27;">🔔 Live Alert Simulation</h3>
+                    <p style="color: #666; margin-bottom: 1rem;">See how you'll receive instant notifications:</p>
+                    
+                    <div id="notificationsContainer">
+                        <!-- Notifications will appear here -->
+                    </div>
+                    
+                    <div id="matchesFound" style="display: none;">
+                        <h4 style="color: #2d5a27; margin: 1.5rem 0 1rem;">Current Matches Found:</h4>
+                        <div class="matches-container" id="matchesContainer">
+                            <!-- Matches will appear here -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -666,17 +832,17 @@
             <h2 class="section-title">Simple, Transparent Pricing</h2>
             <div class="pricing-card">
                 <div class="price">₹10</div>
-                <p class="price-description">Per contact reveal - No hidden fees, no subscriptions</p>
+                <p class="price-description">Per contact unlock - No subscriptions, no hidden fees</p>
                 <ul style="text-align: left; margin: 2rem 0;">
                     <li>✅ Verified contact details</li>
                     <li>✅ Property owner information</li>
                     <li>✅ Best time to contact</li>
+                    <li>✅ WhatsApp direct access</li>
                     <li>✅ Preferred communication method</li>
-                    <li>✅ Direct WhatsApp/Call access</li>
                     <li>✅ 7-day contact guarantee</li>
                 </ul>
                 <p style="color: #666; font-size: 0.9rem; margin-top: 1rem;">
-                    <strong>Free Services:</strong> Listing properties, browsing matches, platform access, caretaker directory, market analytics
+                    <strong>Always Free:</strong> Property listings, smart alerts, match browsing, market analytics, platform access
                 </p>
             </div>
         </div>
@@ -688,20 +854,18 @@
             <span class="close">&times;</span>
             <h2>Unlock Contact Details</h2>
             <p>You're about to connect with:</p>
-            <div class="contact-info">
-                <strong>Rajesh Kumar</strong><br>
-                Property: 5-acre farmland in Nashik<br>
-                Price: ₹45 Lakhs<br>
-                <small>⭐⭐⭐⭐⭐ (23 reviews)</small>
+            <div class="contact-info" id="contactDetails">
+                <!-- Contact details will be populated here -->
             </div>
             <p>Pay ₹10 to get:</p>
             <ul>
-                <li>📱 Mobile number: +91 XXXXX XXXXX</li>
+                <li>📱 Mobile number</li>
                 <li>📧 Email address</li>
                 <li>💬 WhatsApp quick connect</li>
-                <li>⏰ Best time to call: 6-8 PM</li>
+                <li>⏰ Best time to call</li>
+                <li>📍 Exact location details</li>
             </ul>
-            <button class="btn btn-primary" onclick="processPayment()">Pay ₹10 & Unlock</button>
+            <button class="btn btn-primary" onclick="processPayment()">Pay ₹10 & Unlock Contact</button>
         </div>
     </div>
 
@@ -710,13 +874,13 @@
         <div class="container">
             <h3 style="margin-bottom: 1rem; color: #90ee90;">Important Disclaimers</h3>
             <div class="disclaimer-text">
-                <p><strong>AgriConnect is a connection platform only.</strong> We facilitate introductions between property buyers and sellers but do not participate in actual transactions. All legal, financial, and documentation processes are to be handled directly between parties post-connection.</p>
+                <p><strong>Flat2FarmsConnect is a connection platform only.</strong> We facilitate introductions between flat sellers and farmland owners but do not participate in actual transactions. All legal, financial, and documentation processes are to be handled directly between parties post-connection.</p>
                 
-                <p style="margin-top: 1rem;"><strong>Due Diligence:</strong> Users are responsible for verifying all property details, legal documents, land records, and conducting proper due diligence before any transaction. AgriConnect recommends consulting legal experts and conducting site visits.</p>
+                <p style="margin-top: 1rem;"><strong>Due Diligence:</strong> Users are responsible for verifying all property details, legal documents, land records, soil quality, water availability, and conducting proper due diligence before any transaction. We recommend consulting legal experts and conducting site visits.</p>
                 
-                <p style="margin-top: 1rem;"><strong>No Transaction Guarantee:</strong> Platform fees are for contact access only. We do not guarantee successful transactions, property authenticity, or dispute resolution. All deals are subject to mutual agreement between parties.</p>
+                <p style="margin-top: 1rem;"><strong>No Transaction Guarantee:</strong> Platform fees are for contact access only. We do not guarantee successful transactions, property authenticity, fair pricing, or dispute resolution. All deals are subject to mutual agreement between parties.</p>
                 
-                <p style="margin-top: 1rem;"><strong>Legal Compliance:</strong> Users must comply with local property laws, RERA regulations, agricultural land transfer rules, and state-specific guidelines. Consult legal professionals for compliance.</p>
+                <p style="margin-top: 1rem;"><strong>Legal Compliance:</strong> Users must comply with local property laws, RERA regulations, agricultural land transfer rules, stamp duty requirements, and state-specific guidelines. Consult legal professionals for compliance.</p>
             </div>
         </div>
     </section>
@@ -726,21 +890,21 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>AgriConnect</h3>
-                    <p>Bridging urban aspirations with rural opportunities. Transform your property portfolio from concrete to crops.</p>
+                    <h3>Flat2FarmsConnect</h3>
+                    <p>Connecting urban assets with rural opportunities. Transform your property portfolio from city flats to village farms.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <p><a href="#features">Features</a></p>
                     <p><a href="#pricing">Pricing</a></p>
-                    <p><a href="#demo">Demo</a></p>
+                    <p><a href="#demo">Live Demo</a></p>
                     <p><a href="#how-it-works">How It Works</a></p>
                 </div>
                 <div class="footer-section">
                     <h3>Support</h3>
-                    <p><a href="mailto:help@agriconnect.in">help@agriconnect.in</a></p>
-                    <p><a href="tel:+911234567890">+91 12345 67890</a></p>
-                    <p>Mon-Sat: 9 AM - 6 PM</p>
+                    <p><a href="mailto:help@flat2farmsconnect.in">help@flat2farmsconnect.in</a></p>
+                    <p><a href="tel:+911800123456">+91 1800 123 456</a></p>
+                    <p>Mon-Sat: 9 AM - 7 PM</p>
                 </div>
                 <div class="footer-section">
                     <h3>Legal</h3>
@@ -751,50 +915,218 @@
                 </div>
             </div>
             <div style="border-top: 1px solid #333; padding-top: 1rem; margin-top: 2rem;">
-                <p>&copy; 2025 AgriConnect. All rights reserved. | Made with 🌾 for rural-urban property transformation</p>
+                <p>&copy; 2025 Flat2FarmsConnect. All rights reserved. | Made with 💙 for urban-rural property exchange</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Demo Form Handling
+        // Sample data for demo
+        const sampleMatches = {
+            'flat-seller': [
+                {
+                    title: "5-Acre Farmland in Nashik",
+                    price: "₹65 Lakhs",
+                    details: "Good water supply, grape cultivation ready",
+                    owner: "Rajesh Patil",
+                    village: "Dindori, Nashik",
+                    contact: "+91 98765 43210"
+                },
+                {
+                    title: "8-Acre Farm in Satara",
+                    price: "₹95 Lakhs", 
+                    details: "Sugar cane cultivation, excellent soil",
+                    owner: "Suresh Jadhav",
+                    village: "Karad, Satara",
+                    contact: "+91 87654 32109"
+                },
+                {
+                    title: "3-Acre Organic Farm in Kolhapur",
+                    price: "₹45 Lakhs",
+                    details: "Organic certification, drip irrigation",
+                    owner: "Anita Deshmukh",
+                    village: "Shiroli, Kolhapur", 
+                    contact: "+91 76543 21098"
+                }
+            ],
+            'farm-seller': [
+                {
+                    title: "2BHK Flat in Pune",
+                    price: "₹75 Lakhs",
+                    details: "Want to buy 4-5 acre farmland",
+                    owner: "Amit Sharma",
+                    city: "Pune, Maharashtra",
+                    contact: "+91 98765 12345"
+                },
+                {
+                    title: "3BHK Flat in Mumbai",
+                    price: "₹1.2 Crores",
+                    details: "Looking for 8-10 acre farm near Nashik",
+                    owner: "Priya Mehta",
+                    city: "Mumbai, Maharashtra",
+                    contact: "+91 87654 23456"
+                },
+                {
+                    title: "1BHK Flat in Thane",
+                    price: "₹55 Lakhs", 
+                    details: "Want small 2-3 acre farm for weekend retreat",
+                    owner: "Rahul Joshi",
+                    city: "Thane, Maharashtra",
+                    contact: "+91 76543 34567"
+                }
+            ]
+        };
+
+        const notificationTemplates = {
+            'flat-seller': [
+                "🚨 New farmland alert: 5-acre farm in Nashik matching your criteria!",
+                "💰 Price match: Farm in Satara within your ₹50L-1Cr budget!",
+                "📍 Location alert: New listing in your preferred Kolhapur villages!",
+                "⚡ Urgent: Owner wants quick sale - 20% below market rate!",
+                "🌾 Premium farm: Organic certified land now available!"
+            ],
+            'farm-seller': [
+                "🏢 New buyer alert: Flat seller looking for your area!",
+                "💵 Budget match: Buyer has ₹75L budget for your land!",
+                "📞 Urgent buyer: Someone wants to call you today!",
+                "⭐ Premium buyer: Verified flat seller with immediate cash!",
+                "🎯 Perfect match: Buyer's requirements match your farm!"
+            ]
+        };
+
+        // Enhanced form handling with real-time demo
+        document.getElementById('userType').addEventListener('change', function() {
+            const flatDetails = document.getElementById('flatDetails');
+            const farmDetails = document.getElementById('farmDetails');
+            
+            if (this.value === 'flat-seller') {
+                flatDetails.style.display = 'block';
+                farmDetails.style.display = 'none';
+            } else if (this.value === 'farm-seller') {
+                flatDetails.style.display = 'none';
+                farmDetails.style.display = 'block';
+            } else {
+                flatDetails.style.display = 'none';
+                farmDetails.style.display = 'none';
+            }
+        });
+
         document.getElementById('demoForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simulate processing
+            const userType = document.getElementById('userType').value;
             const submitBtn = e.target.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Finding matches...';
+            
+            // Show loading
+            submitBtn.innerHTML = '<span class="loading"></span> Activating alerts...';
             submitBtn.disabled = true;
             
             setTimeout(() => {
+                // Show success message
                 document.getElementById('successMessage').style.display = 'block';
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 
-                // Add demo contact buttons
+                // Start notification simulation
+                startNotificationDemo(userType);
+                
+                // Show matches after notifications
                 setTimeout(() => {
-                    const demoContacts = document.createElement('div');
-                    demoContacts.innerHTML = `
-                        <h4 style="margin: 1rem 0; color: #2d5a27;">Sample Matches Found:</h4>
-                        <div style="border: 1px solid #ddd; padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
-                            <strong>Farmland in Nashik</strong> - ₹45L<br>
-                            <small>5 acres, good water supply</small><br>
-                            <button class="btn btn-primary" style="margin-top: 0.5rem; padding: 0.5rem 1rem;" onclick="showContactModal()">View Contact (₹10)</button>
-                        </div>
-                        <div style="border: 1px solid #ddd; padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
-                            <strong>2BHK Flat in Pune</strong> - ₹75L<br>
-                            <small>Looking for farmland exchange</small><br>
-                            <button class="btn btn-primary" style="margin-top: 0.5rem; padding: 0.5rem 1rem;" onclick="showContactModal()">View Contact (₹10)</button>
-                        </div>
-                    `;
-                    document.getElementById('successMessage').appendChild(demoContacts);
-                }, 1000);
+                    showMatches(userType);
+                }, 3000);
+                
             }, 2000);
         });
 
-        // Modal functionality
-        function showContactModal() {
+        function startNotificationDemo(userType) {
+            const container = document.getElementById('notificationsContainer');
+            const notifications = notificationTemplates[userType];
+            let notificationIndex = 0;
+            
+            function showNextNotification() {
+                if (notificationIndex < notifications.length) {
+                    const notification = document.createElement('div');
+                    notification.className = 'notification show';
+                    
+                    const now = new Date();
+                    const timeStr = now.toLocaleTimeString('en-US', { 
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                    });
+                    
+                    notification.innerHTML = `
+                        <div class="notification-time">${timeStr}</div>
+                        <div class="notification-header">🔔 Smart Alert</div>
+                        <div class="notification-content">${notifications[notificationIndex]}</div>
+                    `;
+                    
+                    container.appendChild(notification);
+                    
+                    // Scroll to bottom
+                    container.scrollTop = container.scrollHeight;
+                    
+                    notificationIndex++;
+                    
+                    // Show next notification after 1.5 seconds
+                    if (notificationIndex < notifications.length) {
+                        setTimeout(showNextNotification, 1500);
+                    }
+                }
+            }
+            
+            // Start showing notifications
+            showNextNotification();
+        }
+
+        function showMatches(userType) {
+            const matchesFound = document.getElementById('matchesFound');
+            const matchesContainer = document.getElementById('matchesContainer');
+            const matches = sampleMatches[userType];
+            
+            matchesContainer.innerHTML = '';
+            
+            matches.forEach((match, index) => {
+                const matchCard = document.createElement('div');
+                matchCard.className = 'match-card';
+                matchCard.innerHTML = `
+                    <h4>${match.title}</h4>
+                    <div class="match-price">${match.price}</div>
+                    <div class="match-details">${match.details}</div>
+                    <div class="match-details">📍 ${match.village || match.city}</div>
+                    <button class="btn btn-primary" style="margin-top: 0.5rem; padding: 0.5rem 1rem;" 
+                            onclick="showContactModal('${match.owner}', '${match.title}', '${match.price}', '${match.contact}')">
+                        View Contact (₹10)
+                    </button>
+                `;
+                matchesContainer.appendChild(matchCard);
+                
+                // Add staggered animation
+                setTimeout(() => {
+                    matchCard.style.opacity = '0';
+                    matchCard.style.transform = 'translateY(20px)';
+                    matchCard.style.transition = 'all 0.5s ease-out';
+                    matchCard.style.opacity = '1';
+                    matchCard.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+            
+            matchesFound.style.display = 'block';
+        }
+
+        // Enhanced modal functionality
+        function showContactModal(owner, property, price, contact) {
+            const contactDetails = document.getElementById('contactDetails');
+            contactDetails.innerHTML = `
+                <strong>${owner}</strong><br>
+                Property: ${property}<br>
+                Price: ${price}<br>
+                <small>⭐⭐⭐⭐⭐ (verified user)</small>
+            `;
+            
+            // Store contact for payment processing
+            window.currentContact = { owner, property, price, contact };
+            
             document.getElementById('contactModal').style.display = 'block';
         }
 
@@ -810,7 +1142,17 @@
         });
 
         function processPayment() {
-            alert('🎉 Payment successful! Contact details unlocked:\n\nRajesh Kumar\n📱 +91 98765 43210\n📧 rajesh.farms@gmail.com\n💬 WhatsApp: Available\n⏰ Best time: 6-8 PM IST\n\nThank you for using AgriConnect!');
+            const contact = window.currentContact;
+            alert(`🎉 Payment successful! Contact details unlocked:
+
+${contact.owner}
+📱 ${contact.contact}
+📧 ${contact.owner.toLowerCase().replace(' ', '.')}@gmail.com
+💬 WhatsApp: Available
+⏰ Best time: 10 AM - 8 PM
+📍 Available for site visit: Weekends
+
+Thank you for using Flat2FarmsConnect!`);
             document.getElementById('contactModal').style.display = 'none';
         }
 
