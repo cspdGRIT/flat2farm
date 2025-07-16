@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Transform Your City Assets into Rural Wealth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2d5a27 0%, #4a8c3a 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #90ee90;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #90ee90;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2d5a27 0%, #4a8c3a 50%, #90ee90 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #90ee90);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #90ee90;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2d5a27;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2d5a27;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #4a8c3a;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(45, 90, 39, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4a8c3a, #90ee90);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #2d5a27;
+        }
+
+        .feature-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .feature-badge {
+            background: #ff6b35;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #2d5a27;
+        }
+
+        /* Demo Section */
+        .demo {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .demo-form {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2d5a27;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #4a8c3a;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 5rem 0;
+            background: #f8fafc;
+            text-align: center;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            border: 3px solid #4a8c3a;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .price-description {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        /* Disclaimers */
+        .disclaimers {
+            padding: 3rem 0;
+            background: #2d5a27;
+            color: white;
+        }
+
+        .disclaimer-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #90ee90;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #90ee90;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #4caf50;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .contact-info {
+            background: #e8f5e8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #4a8c3a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">🌾 AgriConnect</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Transform Your City Assets into Rural Wealth</h1>
+            <p>Connecting urban flat sellers with rural farmland opportunities across India. Diversify your portfolio from concrete to crops.</p>
+            
+            <div class="cta-buttons">
+                <a href="#demo" class="btn btn-primary">Start Your Journey</a>
+                <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">15,000+</div>
+                    <div class="stat-label">Active Listings</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Successful Connections</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Cities & Districts</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">₹10</div>
+                    <div class="stat-label">Contact Fee Only</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Comprehensive Platform Features</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-badge">For City Dwellers</div>
+                    <div class="feature-icon">🏢</div>
+                    <h3 class="feature-title">Flat Seller Hub</h3>
+                    <p class="feature-description">List your city properties and explore farmland investment opportunities. Get matched with rural sellers looking for urban property exchanges or direct sales.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-badge">For Rural Owners</div>
+                    <div class="feature-icon">🌾</div>
+                    <h3 class="feature-title">Farmland Marketplace</h3>
+                    <p class="feature-description">Showcase your agricultural lands to city buyers. Access urban capital while maintaining your rural heritage through our trusted platform.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-badge">Smart Matching</div>
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">AI-Powered Matching</h3>
+                    <p class="feature-description">Advanced algorithms match properties based on value, location preferences, soil quality, connectivity, and investment goals for perfect fits.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-badge">Caretaker Network</div>
+                    <div class="feature-icon">👨‍🌾</div>
+                    <h3 class="feature-title">Professional Caretakers</h3>
+                    <p class="feature-description">Connect with verified local caretakers who manage your farmland investments. From maintenance to crop management - we've got you covered.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-badge">Secure Payments</div>
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">₹10 Contact System</h3>
+                    <p class="feature-description">Pay only ₹10 to access verified contact details. No hidden fees, no subscriptions. Connect directly with serious buyers and sellers only.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-badge">Full Support</div>
+                    <div class="feature-icon">📋</div>
+                    <h3 class="feature-title">Documentation Assistance</h3>
+                    <p class="feature-description">Get guidance on legal documentation, land verification, and transfer processes. We connect you with local experts for seamless transactions.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-badge">Market Intelligence</div>
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Price Analytics</h3>
+                    <p class="feature-description">Access real-time market data, price trends, and valuation insights for both urban properties and rural farmlands across different regions.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-badge">Community</div>
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="feature-title">Feedback & Reviews</h3>
+                    <p class="feature-description">Build trust through our verified review system. Rate your experiences and help others make informed decisions in their property journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How AgriConnect Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Create Your Profile</h3>
+                    <p>Register as a flat seller, farmland owner, or caretaker. Complete your profile with detailed information and preferences.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">List Your Property</h3>
+                    <p>Upload photos, documents, and detailed descriptions. Our AI helps optimize your listing for maximum visibility.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Get Smart Matches</h3>
+                    <p>Receive notifications when suitable properties match your criteria. Browse curated recommendations based on your preferences.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Pay ₹10 & Connect</h3>
+                    <p>Pay a small fee to access contact details of serious buyers/sellers. Direct communication with verified users only.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">Complete Transaction</h3>
+                    <p>Handle the deal directly with legal and documentation support. Leave feedback to help the community grow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <h2 class="section-title">Try Our Platform Demo</h2>
+            <div class="demo-container">
+                <div>
+                    <h3>Experience the Future of Property Exchange</h3>
+                    <p>Test our matching algorithm with real data. See how we connect city properties with rural farmlands based on your specific requirements.</p>
+                    <ul style="margin: 2rem 0; line-height: 2;">
+                        <li>✅ Smart property matching</li>
+                        <li>✅ Price analytics & trends</li>
+                        <li>✅ Document verification</li>
+                        <li>✅ Caretaker recommendations</li>
+                        <li>✅ Legal compliance checker</li>
+                    </ul>
+                </div>
+                <div class="demo-form">
+                    <h3 style="margin-bottom: 1.5rem; color: #2d5a27;">Find Your Perfect Match</h3>
+                    <form id="demoForm">
+                        <div class="form-group">
+                            <label for="propertyType">I want to:</label>
+                            <select id="propertyType" required>
+                                <option value="">Select option</option>
+                                <option value="sell-flat">Sell my city flat for farmland</option>
+                                <option value="sell-farm">Sell my farmland</option>
+                                <option value="become-caretaker">Become a caretaker</option>
+                                <option value="find-caretaker">Find a caretaker</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Location/City:</label>
+                            <input type="text" id="location" placeholder="e.g., Mumbai, Delhi, Pune" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Budget Range:</label>
+                            <select id="budget" required>
+                                <option value="">Select budget</option>
+                                <option value="5-15">₹5-15 Lakhs</option>
+                                <option value="15-50">₹15-50 Lakhs</option>
+                                <option value="50-100">₹50L-1 Crore</option>
+                                <option value="100+">₹1 Crore+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Find Matches Now</button>
+                    </form>
+                    
+                    <div id="successMessage" class="success-message">
+                        🎉 Great! We found 12 potential matches for you. Pay ₹10 to unlock contact details!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <div class="pricing-card">
+                <div class="price">₹10</div>
+                <p class="price-description">Per contact reveal - No hidden fees, no subscriptions</p>
+                <ul style="text-align: left; margin: 2rem 0;">
+                    <li>✅ Verified contact details</li>
+                    <li>✅ Property owner information</li>
+                    <li>✅ Best time to contact</li>
+                    <li>✅ Preferred communication method</li>
+                    <li>✅ Direct WhatsApp/Call access</li>
+                    <li>✅ 7-day contact guarantee</li>
+                </ul>
+                <p style="color: #666; font-size: 0.9rem; margin-top: 1rem;">
+                    <strong>Free Services:</strong> Listing properties, browsing matches, platform access, caretaker directory, market analytics
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Unlock Contact Details</h2>
+            <p>You're about to connect with:</p>
+            <div class="contact-info">
+                <strong>Rajesh Kumar</strong><br>
+                Property: 5-acre farmland in Nashik<br>
+                Price: ₹45 Lakhs<br>
+                <small>⭐⭐⭐⭐⭐ (23 reviews)</small>
+            </div>
+            <p>Pay ₹10 to get:</p>
+            <ul>
+                <li>📱 Mobile number: +91 XXXXX XXXXX</li>
+                <li>📧 Email address</li>
+                <li>💬 WhatsApp quick connect</li>
+                <li>⏰ Best time to call: 6-8 PM</li>
+            </ul>
+            <button class="btn btn-primary" onclick="processPayment()">Pay ₹10 & Unlock</button>
+        </div>
+    </div>
+
+    <!-- Disclaimers -->
+    <section class="disclaimers">
+        <div class="container">
+            <h3 style="margin-bottom: 1rem; color: #90ee90;">Important Disclaimers</h3>
+            <div class="disclaimer-text">
+                <p><strong>AgriConnect is a connection platform only.</strong> We facilitate introductions between property buyers and sellers but do not participate in actual transactions. All legal, financial, and documentation processes are to be handled directly between parties post-connection.</p>
+                
+                <p style="margin-top: 1rem;"><strong>Due Diligence:</strong> Users are responsible for verifying all property details, legal documents, land records, and conducting proper due diligence before any transaction. AgriConnect recommends consulting legal experts and conducting site visits.</p>
+                
+                <p style="margin-top: 1rem;"><strong>No Transaction Guarantee:</strong> Platform fees are for contact access only. We do not guarantee successful transactions, property authenticity, or dispute resolution. All deals are subject to mutual agreement between parties.</p>
+                
+                <p style="margin-top: 1rem;"><strong>Legal Compliance:</strong> Users must comply with local property laws, RERA regulations, agricultural land transfer rules, and state-specific guidelines. Consult legal professionals for compliance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AgriConnect</h3>
+                    <p>Bridging urban aspirations with rural opportunities. Transform your property portfolio from concrete to crops.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#features">Features</a></p>
+                    <p><a href="#pricing">Pricing</a></p>
+                    <p><a href="#demo">Demo</a></p>
+                    <p><a href="#how-it-works">How It Works</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <p><a href="mailto:help@agriconnect.in">help@agriconnect.in</a></p>
+                    <p><a href="tel:+911234567890">+91 12345 67890</a></p>
+                    <p>Mon-Sat: 9 AM - 6 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <p><a href="#">Privacy Policy</a></p>
+                    <p><a href="#">Terms of Service</a></p>
+                    <p><a href="#">Refund Policy</a></p>
+                    <p><a href="#">Disclaimers</a></p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #333; padding-top: 1rem; margin-top: 2rem;">
+                <p>&copy; 2025 AgriConnect. All rights reserved. | Made with 🌾 for rural-urban property transformation</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Demo Form Handling
+        document.getElementById('demoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate processing
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Finding matches...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'block';
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Add demo contact buttons
+                setTimeout(() => {
+                    const demoContacts = document.createElement('div');
+                    demoContacts.innerHTML = `
+                        <h4 style="margin: 1rem 0; color: #2d5a27;">Sample Matches Found:</h4>
+                        <div style="border: 1px solid #ddd; padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
+                            <strong>Farmland in Nashik</strong> - ₹45L<br>
+                            <small>5 acres, good water supply</small><br>
+                            <button class="btn btn-primary" style="margin-top: 0.5rem; padding: 0.5rem 1rem;" onclick="showContactModal()">View Contact (₹10)</button>
+                        </div>
+                        <div style="border: 1px solid #ddd; padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
+                            <strong>2BHK Flat in Pune</strong> - ₹75L<br>
+                            <small>Looking for farmland exchange</small><br>
+                            <button class="btn btn-primary" style="margin-top: 0.5rem; padding: 0.5rem 1rem;" onclick="showContactModal()">View Contact (₹10)</button>
+                        </div>
+                    `;
+                    document.getElementById('successMessage').appendChild(demoContacts);
+                }, 1000);
+            }, 2000);
+        });
+
+        // Modal functionality
+        function showContactModal() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('contactModal').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('contactModal');
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        function processPayment() {
+            alert('🎉 Payment successful! Contact details unlocked:\n\nRajesh Kumar\n📱 +91 98765 43210\n📧 rajesh.farms@gmail.com\n💬 WhatsApp: Available\n⏰ Best time: 6-8 PM IST\n\nThank you for using AgriConnect!');
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
